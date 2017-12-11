@@ -9,26 +9,26 @@ wrapper around the `npm-profile` library.
 ```
 npm-profile <cmd> <args>
 
-Commands:
+Commands(命令):
   adduser [<username>] [<email>]  adduser a new account  //添加一个新账户
   login [<username>]              login to an existing account      //登录到现有帐户
-  token [create|list|delete]      create and remove authentication tokens
-  get [<property>]                get the value of a profile property
-  set <property> <value>          set the value of a profile property
-  2fa [status|enable|disable]     control two factor authentication for this
-                                  account                         [aliases: tfa]
-  2fa status         get the status of 2fa for the current login
-  2fa disable        disable 2fa for the current login
-  2fa enable <mode>  enable 2fa for the current login
-    <mode> can be one of:
-      auth-only - Require two-factor authentication only when logging in
-      auth-and-writes - Require two-factor authentication when logging in AND when publishing
+  token [create|list|delete]      create and remove authentication tokens     //创建和删除身份验证令牌       
+  get [<property>]                get the value of a profile property       //获取配置文件属性的值
+  set <property> <value>          set the value of a profile property       //设置配置文件属性的值
+  2fa [status|enable|disable]     control two factor authentication for this   
+                                  account                         [aliases: tfa]  //控制此帐户的双因素身份验证
+  2fa status(状态)         get the status of 2fa for the current login         //得到当前登录的2fa的现状
+  2fa disable(禁用)        disable 2fa for the current login             //禁用2fa当前登录
+  2fa enable <mode>(使用模式)    enable 2fa for the current login        //使2fa当前登录 
+    <mode> can be one of(两种模式):
+      auth-only - Require two-factor authentication only when logging in  //只有在登录时才需要双因素身份验证。
+      auth-and-writes - Require two-factor authentication when logging in AND when publishing  //在登录和发布时需要双因素身份验证
 
 
-Options:
-  --config    the npmrc to read/write your configuration from/to
-                                     [string] [default: "/Users/rebecca/.npmrc"]
-  --registry  the registry to talk to                                   [string]
-  --otp       a one time password                                       [string]
-  --help      Show help                                                [boolean]
+Options(选项):
+  --config(配置)  the npmrc to read/write your configuration from/to              
+                                     [string] [default: "/Users/rebecca/.npmrc"]    //npmrc的读/写你的配置的写入(string类型)
+  --registry(注册表)  the registry to talk to                            [string]   //要处理的注册表(string类型)
+  --otp(身份认证系统)      a one time password                          [string]     //一次性密码(string类型)
+  --help      Show help                                                [boolean]    //显示帮助(boolean类型)
 ```
