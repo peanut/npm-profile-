@@ -10,8 +10,8 @@ wrapper around the `npm-profile` library.
 npm-profile <cmd> <args>
 
 Commands:
-  adduser [<username>] [<email>]  adduser a new account
-  login [<username>]              login to an existing account
+  adduser [<username>] [<email>]  adduser a new account  //添加一个新账户
+  login [<username>]              login to an existing account      //登录到现有帐户
   token [create|list|delete]      create and remove authentication tokens
   get [<property>]                get the value of a profile property
   set <property> <value>          set the value of a profile property
