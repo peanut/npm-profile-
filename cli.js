@@ -5,7 +5,7 @@ const path = require('path')      //path模块提供了一些工具函数，用�
 const Bluebird = require('bluebird')     //bluebird提供了一个非常有用的功能来promise化不返回promise的模块。比如，promise化fs模块，只需要简单地                                          //require bluebird模块和一个被promise化的fs模块。
 const log = require('npmlog')            //nodejs默认的采用是morgan的日志系统，一般显示的结果都是在控制台输出，当重启服务器的时候，这些信息就会                                          //丢失，无法长久保存，因此，我们考虑采用新的log机制，
 const yargs = require('yargs')           //yargs是一个npm模块用来完成命令行参数解析
-const npmrc = require('./cmds/util/npmrc.js')
+const npmrc = require('./cmds/util/npmrc.js')   //
 
 process.on('log', function (level) {
   return log[level].apply(log, [].slice.call(arguments, 1))
