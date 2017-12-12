@@ -10,6 +10,17 @@ wrapper around the `npm-profile` library.
 npm-profile <cmd> <args>
 
 Commands(命令):
+
+.command方法有三个接口
+
+.command(cmd, desc, [builder], [handler])
+
+.command(cmd, desc, [module])
+
+.command(module)
+其实它们的用法都差不多，可以把它们都看作传递一个module给yargs，这个module必须导出四个变量
+cmd, desc [builder], [handler]，其中builder和handler是方法，另外两个是字符串
+
   adduser [<username>] [<email>]  adduser a new account  //添加一个新账户
   login [<username>]              login to an existing account      //登录到现有帐户
   token [create|list|delete]      create and remove authentication tokens     //创建和删除身份验证令牌       
