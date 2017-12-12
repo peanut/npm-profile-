@@ -102,9 +102,9 @@ const argv = yargs                         //yargs提供很多接口用来帮助
   .argv
 
 if (!running) {
-  console.error('Invalid command:', argv._[0], '\n')
+  console.error('Invalid command:', argv._[0], '\n')        //输出错误信息：无效的命令
   yargs.showHelp()
-  process.exit(1)
+  process.exit(1)     
 }
 
 function run (cmd, subcmd) {
