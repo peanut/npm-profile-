@@ -45,28 +45,30 @@ Options(选项):
 ```
 
 OS
+---------------
 
 稳定性：2 - 稳定
 该os模块提供了许多与操作系统相关的实用程序方法。它可以通过以下方式访问：
 
 const  os  =  require（' os '）;
-npmrc
 
+npmrc
+---------------
 轻松和优雅地切换不同的.npmrc文件。
 
 概观
-
+---------------
 如果您使用私有的npm注册表，您将知道在一堆不同的.npmrc文件之间切换以及手动管理符号链接的麻烦。让这成为一个问题不再！npmrc在这里是为了节省一天的时间，通过使用一个特定的命名版本来切换你的.npmrc非常简单。它还试图保护你免受你自己愚蠢的自我，确保你不会意外覆盖你实际想保留的.npmrc。
 
 安装
-
+---------------
 npm install -g npmrc
 用法
 
 ➜  ~  npmrc --help
 
 npmrc
-
+---------------
   Switch between different .npmrc files with ease and grace.
 
 Usage:
