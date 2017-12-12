@@ -4,7 +4,7 @@ const os = require('os')   //os模块，可以用来获取操作系统相关的�
 const path = require('path')      //path模块提供了一些工具函数，用于处理文件与目录的路径。
 const Bluebird = require('bluebird')     //bluebird提供了一个非常有用的功能来promise化不返回promise的模块。比如，promise化fs模块，只需要简单地                                          //require bluebird模块和一个被promise化的fs模块。
 const log = require('npmlog')            //nodejs默认的采用是morgan的日志系统，一般显示的结果都是在控制台输出，当重启服务器的时候，这些信息就会                                          //丢失，无法长久保存，因此，我们考虑采用新的log机制，
-const yargs = require('yargs')           //yargs是一个npm模块用来完成命令行参数解析
+const yargs = require('yargs')           //yargs是一个npm模块用来完成命令行参数解析,
 const npmrc = require('./cmds/util/npmrc.js')   //
 
 process.on('log', function (level) {
@@ -13,39 +13,39 @@ process.on('log', function (level) {
 
 let running = false
 
-const argv = yargs
-  .usage('npm-profile <cmd> <args>')
-  .option('config', {
-    describe: 'the npmrc to read/write your configuration from/to',
+const argv = yargs                         //yargs提供很多接口用来帮助完善命令行程序
+  .usage('npm-profile <cmd> <args>')            
+  .option('config', {                         //配置      
+    describe: 'the npmrc to read/write your configuration from/to',  //npmrc的读/写你的配置的写入
     type: 'string',
-    default: path.join(os.homedir(), '.npmrc')
+    default: path.join(os.homedir(), '.npmrc')    //.default()可以采用将键映射到默认值的对象
   })
-  .option('registry', {
-    describe: 'the registry to talk to',
+  .option('registry', {                    //注册表
+    describe: 'the registry to talk to',    //要处理的注册表
     type: 'string'
   })
-  .option('otp', {
-    describe: 'a one time password',
+  .option('otp', {                       //身份认证系统
+    describe: 'a one time password',      //一次性密码
     type: 'string'
   })
   .command({
-    command: 'adduser [<username>] [<email>]',
-    desc: 'adduser a new account',
-    handler: run('adduser')
+    command: 'adduser [<username>] [<email>]',    //添加一个新账户
+    desc: 'adduser a new account',              
+    handler: run('adduser')                   //运行adduser命令
   })
   .command({
-    command: 'login [<username>]',
-    desc: 'login to an existing account',
-    handler: run('login')
+    command: 'login [<username>]',       
+    desc: 'login to an existing account',      //登录到现有账户
+    handler: run('login')                    //运行登录命令
   })
-  .command({
-    command: 'token [create|list|delete]',
-    desc: 'create and remove authentication tokens',
-    builder: yargs => yargs
+  .command({           
+    command: 'token [create|list|delete]',     
+    desc: 'create and remove authentication tokens',        //创建和删除身份验证令牌
+    builder: yargs => yargs                               
       .command({
-        command: 'create [--readonly] [--cidr]',
-        desc: 'create a new authentication token',
-        handler: run('token', 'create'),
+        command: 'create [--readonly] [--cidr]',              
+        desc: 'create a new authentication token',           //创建一个新的身份验证令牌
+        handler: run('token', 'create'),               
         builder: yargs => yargs
           .option('readonly', {
             type: 'boolean'
@@ -56,48 +56,48 @@ const argv = yargs
       })
       .command({
         command: 'list',
-        desc: 'list all authentication tokens that this account has',
+        desc: 'list all authentication tokens that this account has',       //列出此帐户拥有的所有身份验证令牌
         handler: run('token', 'list')
       })
       .command({
-        command: 'delete <id>',
+        command: 'delete <id>',                    
         aliases: [ 'rm' ],
-        desc: 'remove an authentication token',
+        desc: 'remove an authentication token',          //删除身份验证令牌
         handler: run('token', 'rm')
       })
   })
   .command({
     command: 'get [<property>]',
-    desc: 'get the value of a profile property',
+    desc: 'get the value of a profile property',          //获取配置文件属性的值。         
     handler: run('get')
   })
   .command({
     command: 'set <property> [<value>]',
-    desc: 'set the value of a profile property',
+    desc: 'set the value of a profile property',          //设置配置文件属性的值
     handler: run('set')
   })
   .command({
     command: '2fa [status|enable|disable]',
     aliases: [ 'tfa' ],
-    desc: 'control two factor authentication for this account',
+    desc: 'control two factor authentication for this account',        // 控制此帐户的双因素身份验证
     builder: yargs => yargs
       .command({
         command: 'status',
-        desc: 'get the status of 2fa for the current login',
+        desc: 'get the status of 2fa for the current login',            //得到当前登录的2fa的现状
         handler: run('tfa', 'status')
       })
       .command({
         command: 'enable <mode>',
-        desc: 'enable 2fa for the current login (mode: auth-only, auth-and-writes)',
+        desc: 'enable 2fa for the current login (mode: auth-only, auth-and-writes)',    //在登录使2fa当前登录（模式：认证，授权和写入）
         handler: run('tfa', 'enable')
       })
       .command({
         command: 'disable',
-        desc: 'disable 2fa for the current login',
+        desc: 'disable 2fa for the current login',           //禁用2fa当前登录
         handler: run('tfa', 'disable')
       })
   })
-  .demandCommand()
+  .demandCommand()                              ////提供最小需求和最小需求消息 
   .help()
   .argv
 
