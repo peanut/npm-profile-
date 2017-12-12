@@ -45,48 +45,24 @@ Options(选项):
 ```
 
 OS
-=====
-> Stability: 2 - Stable
 
-The `os` module provides a number of operating system-related utility methods.
-It can be accessed using:
+稳定性：2 - 稳定
+该os模块提供了许多与操作系统相关的实用程序方法。它可以通过以下方式访问：
 
-```js
-const os = require('os');
-```
-
-
-
-
-
-
+const  os  =  require（' os '）;
 npmrc
-=====
 
-Switch between different .npmrc files with ease and grace.
+轻松和优雅地切换不同的.npmrc文件。
 
-Overview
---------
+概观
 
-If you use a private npm registry, you know the pain of switching between a
-bunch of different .npmrc files and manually managing symlinks. Let that be a
-problem no more! `npmrc` is here to save the day, by making it dead simple to
-switch out your .npmrc with a specific named version. It also tries to protect
-you from your own stupid self by making sure you don't accidentally overwrite an
-.npmrc that you actually want to keep.
+如果您使用私有的npm注册表，您将知道在一堆不同的.npmrc文件之间切换以及手动管理符号链接的麻烦。让这成为一个问题不再！npmrc在这里是为了节省一天的时间，通过使用一个特定的命名版本来切换你的.npmrc非常简单。它还试图保护你免受你自己愚蠢的自我，确保你不会意外覆盖你实际想保留的.npmrc。
 
+安装
 
-Installation
-------------
-
-``` sh
 npm install -g npmrc
-```
+用法
 
-Usage
------
-
-```
 ➜  ~  npmrc --help
 
 npmrc
@@ -104,68 +80,43 @@ Available mirrors for npmrc -r:
   eu      - European registry mirror
   cn      - Chinese registry mirror
   default - Default registry
-```
+初始化
 
-#### Initialisation
+npmrc不带参数的调用将创建一个~/.npmrcs/不存在的目录，并将当前的目录复制~/.npmrc为默认的.npmrc配置文件。
 
-Calling `npmrc` without arguments creates an `~/.npmrcs/` directory if it doesn't exist,
-and copies your current `~/.npmrc` as the 'default' .npmrc profile.
-
-```
 ➜  ~  npmrc
 Creating /Users/conrad/.npmrcs
 Making /Users/conrad/.npmrc the default npmrc file
 Activating .npmrc 'default'
-```
+创建一个新的.npmrc配置文件
 
-#### Create a new .npmrc profile
-
-```
 ➜  ~  npmrc -c newprofile
 Removing old .npmrc (/home/rvagg/.npmrcs/default)
 Activating .npmrc 'newprofile'
-```
+一个空白的配置文件将被创建。要将您的配置文件指向非默认注册表：
 
-A blank profile will be created. To point your profile to a non-default registry:
-
-```
 ➜  ~  npm config set registry http://npm.nodejs.org.au:5984/registry/_design/app/_rewrite
-```
+然后使用npm adduser或使用npm login新的配置文件进行身份验证。
 
-Then use `npm adduser` or `npm login` to authenticate with the new profile.
+列出可用的.npmrc配置文件
 
-
-#### List available .npmrc profiles
-
-```
 ➜  ~  npmrc 
 Available npmrcs:
     
 * default
   work
-```
+切换到特定的.npmrc
 
-#### Switch to a specific .npmrc 
-
-```
 ➜  ~  npmrc work
 Removing old .npmrc (/Users/conrad/.npmrcs/default)
 Activating .npmrc 'work'
-```
+您也可以只传递配置文件的前几个字符，并npmrc自动完成配置文件的名称。
 
-You can also pass only the first few characters of a profile and `npmrc` will
-autocomplete the profile's name.
-
-```
 ➜  ~  npmrc def
 Removing old .npmrc (/Users/conrad/.npmrcs/work)
 Activating .npmrc 'default'
-```
+npmrc <name> 也会花一些时间来确保你不会覆盖你可能关心的任何东西：
 
-`npmrc <name>` will also go to some lengths to make sure you don't overwrite
-anything you might care about:
-
-```
 ➜  ~  npmrc default
 Removing old .npmrc (/Users/conrad/.npmrcs/work)
 Activating .npmrc 'default'
@@ -178,5 +129,3 @@ Current .npmrc (/Users/conrad/.npmrc) is not a regular file, not removing it
 ➜  ~  rm ~/.npmrc
 ➜  ~  npmrc default
 Activating .npmrc 'default'
-```
-
