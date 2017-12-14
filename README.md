@@ -4,7 +4,7 @@ npm-profile-cli
 A minimal CLI for taking actions against your npmjs.com profile.  Is a
 wrapper around the `npm-profile` library.
 
-针对您的npmjs.com个人资料采取行动的最小CLI。是npm-profile图书馆的包装。
+针对您的npmjs.com个人资料采取行动的最小的命令行界面，是npm-profile图书馆的包装。
 
 ```
 npm-profile <cmd> <args>
