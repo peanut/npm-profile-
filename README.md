@@ -92,3 +92,6 @@ const yargs = require('yargs')
 ```js
 const npmrc = require('./') 
 ```
+
+## mocha自动化测试
+![image](QQ图片20171214145846.png)
