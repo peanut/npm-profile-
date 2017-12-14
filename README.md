@@ -77,3 +77,18 @@ nodejs默认的采用是morgan的日志系统，一般显示的结果都是在�
 const log = require('npmlog') 
 ```
 
+### yars
+yargs是一个npm模块用来完成命令行参数解析
+<!-- eslint-disable no-unused-vars -->
+
+```js
+const yargs = require('yargs')
+```
+
+### npmrc
+实现轻松和优雅地切换不同的.npmrc文件的功能
+<!-- eslint-disable no-unused-vars -->
+
+```js
+const npmrc = require('./') 
+```
