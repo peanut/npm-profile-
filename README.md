@@ -44,3 +44,36 @@ Options(选项):
   --help      Show help                                                [boolean]    //显示帮助(boolean类型)
 ```
 
+## API
+### os
+os模块，可以用来获取操作系统相关的信息和机器物理信息，例如操作系统平台，内核，cpu架构，内存，cpu，网卡等信息。
+<!-- eslint-disable no-unused-vars -->
+
+```js
+const os = require('os');
+```
+
+### path
+path模块提供了一些工具函数，用于处理文件与目录的路径。
+<!-- eslint-disable no-unused-vars -->
+
+```js
+const path = require('path')  
+```
+
+### bluebird
+bluebird提供了一个非常有用的功能来promise化不返回promise的模块。比如，promise化fs模块，只需要简单地require bluebird模块和一个被promise化的fs模块。
+<!-- eslint-disable no-unused-vars -->
+
+```js
+ const Bluebird = require('bluebird') 
+```
+
+### log
+nodejs默认的采用是morgan的日志系统，一般显示的结果都是在控制台输出，当重启服务器的时候，这些信息就会丢失，无法长久保存，因此，我们考虑采用新的log机制.
+<!-- eslint-disable no-unused-vars -->
+
+```js
+const log = require('npmlog') 
+```
+
